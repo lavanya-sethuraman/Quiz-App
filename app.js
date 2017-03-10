@@ -40,7 +40,7 @@ function renderQuestion(question) {
   '<p>'+parseInt(i+1)+'/5 '+question.question+'</p>'+
   '<form class="js-options">'+getOptions(question)+'</form>'+
   '<button class="js-start"  type="button">Start Over</button>'+
-  '<button  class="js-next" type="button">Next</button>'+
+  '<button  class="js-next" type="button">Submit</button>'+
   '</div>';
   $('.js-question').html(questionHTML);
 }
@@ -109,7 +109,9 @@ function keepScore(answer){
     if(answer===questions[i].answer)
     {
       score++;
-      endHtml='<div class="js-question-container"><p>You Total Score is: '+score+'</p>'+
+      endHtml='<div class="js-question-container">'+
+      '<p>You are Right!</p>'+
+      '<p>You Total Score is: '+score+'</p>'+
       '<button class="js-start" type="button">Start Over</button>'+
       '</div>';
     }
