@@ -1,0 +1,19 @@
+button{
+  width:100px;
+  height:40px;
+}
+div {
+  border: 1px solid grey;
+  padding: 20px;
+  width: 500px;
+}
+button{
+  margin:20px;
+}
+input{
+  display: inline-block;
+}
+body{
+  margin-left: 100px;
+  margin-top: 50px;
+}
