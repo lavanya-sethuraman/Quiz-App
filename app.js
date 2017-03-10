@@ -63,7 +63,7 @@ function startQuiz(questions){
 function handleClicks(){
   $('.js-question').on('click','.js-next',function(){
     if(!$('input').is(':checked'))
-    alert("select one");
+    alert("Please select one of the options!");
     else
     keepScore($('input:checked').val());
   });
@@ -79,46 +79,49 @@ function handleClicks(){
     renderQuestion(questions[i]);
   });
 
-  $('.js-question').on('click','.js-end',function(){
-    i=0;
-    score=0;
-    renderQuestion(questions[i]);
-    console.log('in the start'+i);
-  });
 }
 
 function keepScore(answer){
   var scoreHtml='';
+  var endHtml='';
   if(i<4)
   {
-
     if(answer===questions[i].answer)
     {
       score++;
       scoreHtml='<div class="js-question-container"><p>You are Right!</p>'+
       '<button class="js-eval" type="button">Next</button>'+
       '</div>';
-      $('.js-question').html(scoreHtml);
     }
-
-    else{
+    else
+    {
       scoreHtml='<div class="js-question-container"><p>You are Wrong!</p>'+
       '<p>Correct Answer is: '+questions[i].answer+'</p>'+
       '<button class="js-eval" type="button">Next</button>'+
       '</div>';
-      $('.js-question').html(scoreHtml);
     }
+    $('.js-question').html(scoreHtml);
 
   }
 
   else
   {
     if(answer===questions[i].answer)
-    score++;
-    var endHtml='<div class="js-question-container"><p>You score is: '+score+'</p>'+
-    '<button class="js-end" type="button">Start Over</button>'+
-    '</div>';
+    {
+      score++;
+      endHtml='<div class="js-question-container"><p>You Total Score is: '+score+'</p>'+
+      '<button class="js-start" type="button">Start Over</button>'+
+      '</div>';
+    }
+    else
+    {
+      endHtml='<div class="js-question-container">'+
+      '<p>You are wrong! Correct Answer is: '+questions[i].answer+'</p>'+
+      '<p>You Total Score is: '+score+'</p>'+
+      '<button class="js-start" type="button">Start Over</button>'+
+      '</div>';
+    }
     $('.js-question').html(endHtml);
-  }
 
+  }
 }
